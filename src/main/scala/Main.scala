@@ -12,7 +12,7 @@ object Main extends App {
   val program: Reader[Config, Either[Exception, Result]] = Reader(conf => {
     val subRout: ErrorState[List[ThetaLayer], List[Double]] = for {
       start <- ProcessingActions.startingPoint(conf)
-      //gc <- ProcessingActions.gradientCheck(conf)
+      gc <- ProcessingActions.gradientCheck(conf)
       fin <- ProcessingActions.learn(conf)
       //tst <- ProcessingActions.compare(conf)
     } yield List(start, fin)
